@@ -13,6 +13,10 @@
     "clojure",
     "vacuumlabs"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vacuumlabs/vacuumlabs-threading"
+  },
   "author": "Tomas Kulich",
   "license": "Unlicense",
   "devDependencies": {
