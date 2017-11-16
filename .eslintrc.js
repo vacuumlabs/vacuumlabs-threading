@@ -1,7 +1,7 @@
 module.exports = {
   extends: "vacuumlabs",
   rules: {
-    // Additional, per-project rules...
+    "guard-for-in": 0
   },
   env: {
     node: true,

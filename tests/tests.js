@@ -24,6 +24,36 @@ describe('threading', () => {
     assert.equal(x, 2)
   })
 
+  it('handles zero commands', () => {
+    const x = thread(3)
+    assert.equal(x, 3)
+  })
+
+  const shouldThrow = {
+    arrayDoesNotStartWithFn: () => thread(3, ['hello']),
+    emptyArray: () => thread(3, []),
+    missingPlaceholder: () => thread(3, [Math.max, 10]),
+    unknowArg: () => thread(3, {a: 'hello'}),
+    notDotString: () => thread(3, 'hello'),
+  }
+
+  for (const problemName in shouldThrow) {
+    const problem = shouldThrow[problemName]
+    it(`should throw because of ${problemName}`, (done) => {
+      try {
+        problem()
+      } catch (err) {
+        assert.isOk(err.message.match(/Threading macro was/))
+        done()
+      }
+    })
+  }
+
+  it('handles zero commands', () => {
+    const x = thread(3)
+    assert.equal(x, 3)
+  })
+
   it('demo with lodash', () => {
 
     const data = [
