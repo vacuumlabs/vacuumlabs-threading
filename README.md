@@ -7,13 +7,14 @@ const x = thread('3',
   parseInt,
   [Math.max, 10, $$],
   [Math.min, 20, $$])
-  assert.equal(x, 10)
+assert.equal(x, 10)
 ```
 
 Example with lodash:
 
 ```javascript
 const {thread, $$} = require('vacuumlabs-threading')
+const lo = require('lodash')
 
 const data = [
   {name: 'alice', score: 10},
